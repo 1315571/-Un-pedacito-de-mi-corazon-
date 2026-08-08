@@ -57,6 +57,65 @@ font-size:20px;
 color:#e91e63;
 font-style:italic;
 line-height:1.5;
+}.tarjeta-final{
+margin:70px 20px 40px;
+padding:35px 25px;
+background:rgba(255,255,255,.9);
+border-radius:30px;
+box-shadow:0 8px 30px rgba(0,0,0,.15);
+cursor:pointer;
+transition:transform .4s ease, box-shadow .4s ease;
+}
+
+.tarjeta-final:hover{
+transform:scale(1.02);
+box-shadow:0 12px 35px rgba(0,0,0,.2);
+}
+
+.tarjeta-final .corazon{
+font-size:50px;
+margin-bottom:15px;
+}
+
+.tarjeta-final h2{
+color:#e91e63;
+font-size:28px;
+}
+
+.texto-tarjeta{
+font-size:18px;
+color:#777;
+}
+
+.mensaje-oculto{
+display:none;
+margin-top:30px;
+padding-top:25px;
+border-top:1px solid rgba(233,30,99,.2);
+animation:mensajeFinalAparece 1.5s ease;
+}
+
+.mensaje-oculto p{
+font-size:19px;
+line-height:1.6;
+}
+
+.mensaje-oculto .frase-final{
+color:#e91e63;
+font-size:22px;
+font-weight:bold;
+margin-top:25px;
+}
+
+@keyframes mensajeFinalAparece{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }footer{ padding:40px; font-size:18px; color:#777; } </style> </head> <body> <header> <h1>Para Tatiana ❤️</h1> <p> Hay personas que llegan a nuestra vida y dejan huellas imposibles de borrar. Gracias por cada sonrisa, cada conversación y cada momento compartido. Este pequeño espacio es solo una forma de recordarte lo especial que eres para mí. </p> </header> <section class="galeria"> <img src="01.jpg" alt=""> <img src="02.jpg" alt=""> <img src="03.jpg" alt=""> <img src="04.jpg" alt=""> <img src="05.jpg" alt=""> <img src="06.jpg" alt=""> <img src="07.jpg" alt=""> <img src="08.jpg" alt=""> <img src="09.jpg" alt=""> <img src="10.jpg" alt=""> <img src="11.jpg" alt=""> <img src="12.jpg" alt=""> <img src="13.jpg" alt=""> <img src="14.jpg" alt=""> <img src="15.jpg" alt=""><div class="mensaje-pausa">
 <p>❤️ Cada recuerdo tiene algo especial… pero algunos tienen una persona que los hace inolvidables.</p>
 </div> <img src="16.jpg" alt=""> <img src="17.jpg" alt=""> <img src="18.jpg" alt=""> <img src="19.jpg" alt=""> <img src="20.jpg" alt=""> <img src="21.jpg" alt=""> <img src="22.jpg" alt=""> <img src="23.jpg" alt=""> <img src="24.jpg" alt=""> <img src="25.jpg" alt=""> <img src="26.jpg" alt=""> <img src="27.jpg" alt=""> <img src="28.jpg" alt=""> <img src="29.jpg" alt=""> <img src="30.jpg" alt=""><div class="mensaje-pausa">
@@ -65,7 +124,54 @@ line-height:1.5;
 <p>💗 Y pensar que detrás de cada fotografía hay una historia que solo nosotros conocemos.</p>
 </div> <img src="46.jpg" alt=""> <img src="47.jpg" alt="">  <img src="48.jpg" alt=""> <img src="49.jpg" alt=""> <img src="50.jpg" alt=""> <img src="51.jpg" alt=""> <img src="52.jpg" alt=""> <img src="53.jpg" alt=""> <img src="54.jpg" alt=""><div class="mensaje-pausa">
 <p>❤️ Y todavía quedan muchos recuerdos por guardar...</p>
-</div> <img src="55.jpg" alt=""> </section> <footer> ❤️ Con mucho cariño, Jonathan ❤️ </footer> </body> <audio id="musica" loop>
+</div> <img src="55.jpg" alt=""> <div class="tarjeta-final" onclick="abrirTarjeta()">
+
+<div class="corazon">💌</div>
+
+<h2>Toca aquí, Tatiana ❤️</h2>
+
+<p class="texto-tarjeta">
+Hay algo que quiero decirte...
+</p>
+
+<div class="mensaje-oculto" id="mensajeFinal">
+
+<h2>Para ti, Tatiana ❤️</h2>
+
+<p>
+Hay momentos que uno quisiera guardar para siempre...
+y personas que hacen que cada recuerdo tenga un significado especial.
+</p>
+
+<p>
+Gracias por cada sonrisa, cada conversación,
+cada momento compartido y por todo lo que hemos vivido.
+</p>
+
+<p class="frase-final">
+Este pequeño pedacito de mi corazón es para ti. ❤️
+</p>
+
+<p>
+Con mucho cariño,<br>
+<strong>Jonathan</strong> ❤️
+</p>
+
+</div>
+
+</div></section> <footer> ❤️ Con mucho cariño, Jonathan ❤️ </footer><script>
+function abrirTarjeta(){
+
+const mensaje = document.getElementById("mensajeFinal");
+
+if(mensaje.style.display === "block"){
+mensaje.style.display = "none";
+}else{
+mensaje.style.display = "block";
+}
+
+}
+</script> </body> <audio id="musica" loop>
   <source src="Israel 'IZ' Kamakawiwo'ole - Somewhere Over the Rainbow (Lyrics).mp3" type="audio/mpeg">
 </audio>
 
