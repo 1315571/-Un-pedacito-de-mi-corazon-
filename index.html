@@ -116,6 +116,26 @@ to{
 opacity:1;
 transform:translateY(0);
 }
+}.slideshow-activo{
+display:block !important;
+opacity:1 !important;
+transform:translateY(0) !important;
+animation:slideSuave 1s ease !important;
+}
+
+.slideshow-oculto{
+display:none !important;
+}
+
+@keyframes slideSuave{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }footer{ padding:40px; font-size:18px; color:#777; } </style> </head> <body> <header> <h1>Para Tatiana ❤️</h1> <p> Hay personas que llegan a nuestra vida y dejan huellas imposibles de borrar. Gracias por cada sonrisa, cada conversación y cada momento compartido. Este pequeño espacio es solo una forma de recordarte lo especial que eres para mí. </p> <button onclick="document.getElementById('musica').play()" 
 style="padding:12px 25px;border:none;border-radius:25px;background:#e91e63;color:white;font-size:16px;cursor:pointer;">
 🎵 Dale play y disfruta este pequeño recuerdo ❤️
@@ -174,7 +194,81 @@ mensaje.style.display = "block";
 }
 
 }
-</script> </body> <audio id="musica" loop>
+</script> <script>
+const galeria = document.querySelector(".galeria");
+const fotos = galeria.querySelectorAll("img");
+const mensajes = galeria.querySelectorAll(".mensaje-pausa");
+const tarjetaFinal = galeria.querySelector(".tarjeta-final");
+
+let indiceFoto = 0;
+
+function ocultarTodo(){
+    fotos.forEach(foto => {
+        foto.classList.add("slideshow-oculto");
+        foto.classList.remove("slideshow-activo");
+    });
+
+    mensajes.forEach(mensaje => {
+        mensaje.style.display = "none";
+    });
+
+    if(tarjetaFinal){
+        tarjetaFinal.style.display = "none";
+    }
+}
+
+function mostrarFoto(){
+    ocultarTodo();
+
+    fotos[indiceFoto].classList.remove("slideshow-oculto");
+    fotos[indiceFoto].classList.add("slideshow-activo");
+
+    setTimeout(() => {
+
+        if((indiceFoto + 1) % 15 === 0){
+
+            const numeroMensaje = (indiceFoto + 1) / 15;
+
+            if(mensajes[numeroMensaje - 1]){
+                ocultarTodo();
+                mensajes[numeroMensaje - 1].style.display = "block";
+
+                setTimeout(() => {
+
+                    if(indiceFoto < fotos.length - 1){
+                        indiceFoto++;
+                        mostrarFoto();
+                    }else{
+                        mostrarTarjetaFinal();
+                    }
+
+                }, 8000);
+
+                return;
+            }
+        }
+
+        if(indiceFoto < fotos.length - 1){
+            indiceFoto++;
+            mostrarFoto();
+        }else{
+            mostrarTarjetaFinal();
+        }
+
+    }, 3000);
+}
+
+function mostrarTarjetaFinal(){
+    ocultarTodo();
+
+    if(tarjetaFinal){
+        tarjetaFinal.style.display = "block";
+    }
+}
+
+ocultarTodo();
+mostrarFoto();
+</script></body> <audio id="musica" loop>
   <source src="Israel 'IZ' Kamakawiwo'ole - Somewhere Over the Rainbow (Lyrics).mp3" type="audio/mpeg">
 </audio>
 
